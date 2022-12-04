@@ -2,6 +2,9 @@
 #define GAMEPLAY_H_
 
 #include <stdbool.h>
+#include <wchar.h>
+#include <locale.h>
+#include <stdlib.h>
 
 typedef struct {
     int mm, ss;
@@ -30,6 +33,8 @@ H - Hint Move
 P - Ditempati player
 */
 
+void PlayGame(Player pl);
+
 void tampilPapan(Player pl);
 
 void History(Player pl);
@@ -42,6 +47,6 @@ void giveHint(Player pl, Petak pp);
 
 void saveToLB(Player pl);
 
-void gotoxy();
+void gotoxy(int x, int y);
 
 #endif // GAMEPLAY_H_
