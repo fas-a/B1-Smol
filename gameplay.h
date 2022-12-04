@@ -24,9 +24,10 @@ typedef struct {
 
 /*
 Status:
-0 - Kosong
-1 - Terisi
-2 - Hint Move
+O - Kosong
+X - Terisi
+H - Hint Move
+P - Ditempati player
 */
 
 void tampilPapan(Player pl);
@@ -40,5 +41,7 @@ void Move(Player pl, Petak pp);
 void giveHint(Player pl, Petak pp);
 
 void saveToLB(Player pl);
+
+void gotoxy();
 
 #endif // GAMEPLAY_H_
