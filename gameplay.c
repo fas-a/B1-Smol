@@ -82,6 +82,7 @@ void PlayGame(Player pl) {
     }
 }
 
+
 void invgotoxy(int x, int y) {
     printf("\033[%d;%dH", y, x);
     // Inverted because I like the x to be vertically and y to be horizontally
