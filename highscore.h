@@ -1,17 +1,12 @@
-#ifndef MAINMENU_H_
-#define MAINMENU_H_
+#ifndef HIGHSCORE_H_
+#define HIGHSCORE_H_
+
+#include "gameplay.h"
 #include "mainmenu.h"
 #include<string.h>
 #include<stdlib.h>
 #include<stdio.h>
 #include<windows.h>
-
-typedef struct {
-    int x;
-    int y;
-    int skor;
-    char nama[3];
-}Player;
 
 
 void renderLogoHighscore();

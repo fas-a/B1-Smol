@@ -1,7 +1,7 @@
 #ifndef HOWTOPLAY_H_
 #define HOWTOPLAY_H_
 
-#include "gameplay.h"
+#include "mainmenu.h"
 #include <stdio.h>
 #include <windows.h>
 

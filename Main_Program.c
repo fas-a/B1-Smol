@@ -1,6 +1,7 @@
 #include "gameplay.h"
 #include "mainmenu.h"
 #include "howtoplay.h"
+#include "highscore.h"
 #include <stdio.h>
 
 
@@ -28,7 +29,7 @@ int main(){
             break;
         case 3:
             system("cls");
-            //TampilHighscore();
+            TampilHighscore();
             system("pause");
             break;
         case 4:

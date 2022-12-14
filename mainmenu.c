@@ -63,6 +63,7 @@ void renderLogo()
    }
    delay(5);
  }
+
 }
 
 void TampilLogo(){
@@ -82,7 +83,6 @@ void TampilLogo(){
         printf("%c", titletext[j][k]);
     }
     printf("\n");
-   
  }
 }
 

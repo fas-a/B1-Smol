@@ -1,4 +1,4 @@
-#include "mainmenu.h"
+#include "highscore.h"
 
 void TampilHighscore(){
     int m;
