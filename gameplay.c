@@ -50,7 +50,7 @@ int wkt;
 
 void PlayGame(Player pl) {
     // Hide cursor
-    printf("\33[?25l");
+    printf("\e[?25l");
     int i,j;
     system("cls");
 
@@ -81,7 +81,6 @@ void PlayGame(Player pl) {
         }
     }
 }
-
 
 void invgotoxy(int x, int y) {
     printf("\033[%d;%dH", y, x);
@@ -128,7 +127,7 @@ void initializePlayer(Player *pl) {
     int x,y;
     do {
         invgotoxy(15,2);
-        printf("                                                   ");
+        printf("                                                                             ");
         invgotoxy(15,2);
         printf("Masukkan koordinat petak pertama (x,y) (Format masukkan 'x y' tanpa petik) = ");
         scanf("%d %d", &x, &y);
@@ -246,21 +245,19 @@ void Move(Player *pl){
                             iX = x;
                             iY = y;
 
-                            pl->skor+=1;
-                            if(pl->skor==64) {
-                                beres = true;
-                                goto next_loop;
-                            }
-
                             fflush(stdin);
 
                             papan[x][y].status = 'O';
                             papan[iX][iY].status = 'H';
                             if (!evaluate(x,y)) beres = true;
-
-                            tampilPapan(*pl);
+                            pl->skor+=1;
                             tampilMisc(*pl);
-
+                            if(pl->skor==63) {
+                                menang = true;
+                                beres = true;
+                                goto next_loop;
+                            }
+                            tampilPapan(*pl);
                             goto next_loop;
                         }
                         break;

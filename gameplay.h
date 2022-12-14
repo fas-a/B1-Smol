@@ -53,4 +53,3 @@ bool evaluate(int x, int y);
 void gotoxy(int x, int y);
 
 #endif // GAMEPLAY_H_
-
