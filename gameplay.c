@@ -129,7 +129,7 @@ void initializePlayer(Player *pl) {
         invgotoxy(15,2);
         printf("                                                   ");
         invgotoxy(15,2);
-        printf("Masukkan koordinat petak pertama (x,y) = ");
+        printf("Masukkan koordinat petak pertama (x,y) (Format masukkan 'x y' tanpa petik) = ");
         scanf("%d %d", &x, &y);
         fflush(stdin);
         if (x<1 || x>8 || y<1 || y>8) {
