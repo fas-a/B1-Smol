@@ -2,21 +2,19 @@
 #define GAMEPLAY_H_
 
 #include <stdbool.h>
+#include <stdlib.h>
 #include <wchar.h>
 #include <locale.h>
 #include <stdlib.h>
-
-typedef struct {
-    int mm, ss;
-} Waktu;
+#include <conio.h>
+#include <time.h>
+#include <windows.h>
 
 typedef struct {
     int x;
     int y;
     int skor;
     char nama[3];
-    Waktu wkt;
-    bool hint;
 } Player;
 
 typedef struct {
@@ -29,24 +27,27 @@ typedef struct {
 Status:
 O - Kosong
 X - Terisi
-H - Hint Move
 P - Ditempati player
 */
 
 void PlayGame(Player pl);
 
+void initializePlayer(Player *pl);
+
 void tampilPapan(Player pl);
 
-void History(Player pl);
+void History();
 
 void tampilMisc(Player pl);
 
-void Move(Player pl, Petak pp);
-
-void giveHint(Player pl, Petak pp);
+void Move(Player *p);
 
 void saveToLB(Player pl);
 
 void gotoxy(int x, int y);
+
+bool validate(int ix, int iy, int x, int y);
+
+bool evaluate(int x, int y);
 
 #endif // GAMEPLAY_H_
