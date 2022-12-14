@@ -50,7 +50,7 @@ int wkt;
 
 void PlayGame(Player pl) {
     // Hide cursor
-    printf("\e[?25l");
+    printf("\33[?25l");
     int i,j;
     system("cls");
 

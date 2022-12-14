@@ -1,101 +1,44 @@
-#include<stdio.h>
-#include<stdbool.h>
+#include "gameplay.h"
+#include "mainmenu.h"
+#include <stdio.h>
 
-#define QUIT 99
 
-//Masukin ke representating file nanti
-typedef struct {
-    int mm;
-    int ss;
-}Waktu;
 
-typedef struct {
-    int x;
-    int y;
-    bool hint;
-    char nama[3];
-    Waktu wkt;
-    int score;
-}Player;
-
-typedef struct {
-    int x;
-    int y;
-    char status;
-}Petak;
-
-typedef struct {
-    char nama[3];
-    int score;
-    Waktu time;
-}Highscore;
-
-void TampilMenu();
-/*
-
-*/
-
-int PilihMenu();
-/*
-
-*/
-
-void TampilPapan(Player pl);
-/*
-
-*/
-
-void TampilHighscore();
-/*
-
-*/
-
-void PlayGame();
-/*
-
-*/
-
-void SetPosition();
-/*
-
-*/
-
-void Move();
-/*
-
-*/
-
-void Hint();
-/*
-
-*/
-
-void HowToPlay();
-/*
-
-*/
 
 int main(){
-    Player pl;
-    pl.hint = false;
+    //hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
+    //hideCursor();
+    printf("\33[?25l");
+    renderLogo();
     int opsi;
-    
-    TampilMenu(pl);
-    do {
-        opsi = PilihMenu();
-        if(opsi==1) {
-            PlayGame();
-        } else if(opsi==2) {
-            HowToPlay();
-        } else if(opsi==3) {
-            TampilHighscore();
-        } else if(opsi==4) {
-            //toggle hint
-            pl.hint = !pl.hint;
+    opsi = PilihMenu();
+    while(opsi != 4){
+        switch (opsi)
+        {
+        case 1:
+            Player pl;
+            pl = (Player) {0,0,0,""};
+            PlayGame(pl);
+            break;
+        case 2:
+            printf("Modul How to Play");
+            break;
+        case 3:
             system("cls");
-            TampilMenu(pl.hint);
+            TampilHighscore();
+            system("pause");
+            break;
+        case 4:
+            system("quit");
+            break;
+        default:
+            break;
         }
-    } while(opsi!=QUIT);
+        system("cls");
+        TampilLogo();
+        opsi = PilihMenu();
+    }
     
     return 0;
 }
