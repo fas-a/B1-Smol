@@ -44,10 +44,12 @@ void Move(Player *p);
 
 void saveToLB(Player pl);
 
-void gotoxy(int x, int y);
+void invgotoxy(int x, int y);
 
 bool validate(int ix, int iy, int x, int y);
 
 bool evaluate(int x, int y);
+
+void gotoxy(int x, int y);
 
 #endif // GAMEPLAY_H_

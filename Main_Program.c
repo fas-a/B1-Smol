@@ -1,15 +1,15 @@
 #include "gameplay.h"
 #include "mainmenu.h"
+#include "howtoplay.h"
 #include <stdio.h>
 
 
 
 
 int main(){
-    //hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
     ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
-    //hideCursor();
-    printf("\33[?25l");
+    hideCursor();
     renderLogo();
     int opsi;
     opsi = PilihMenu();
@@ -22,11 +22,13 @@ int main(){
             PlayGame(pl);
             break;
         case 2:
-            printf("Modul How to Play");
+            system("cls");
+            howtoplay();
+            system("pause");
             break;
         case 3:
             system("cls");
-            TampilHighscore();
+            //TampilHighscore();
             system("pause");
             break;
         case 4:

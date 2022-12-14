@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <windows.h>
+#include "howtoplay.h"
 
-void gotoxy(int x, int y);
+
 
 void howtoplay(){
 	printf("\t\t _____   _____   _____    _____     _____   _____   _____    __  __   _____   _____   __   _ \n");
@@ -97,10 +98,4 @@ int solveKTUtil(int x, int y, int movei, int sol[N][N], int xMove[N], int yMove[
 	return 0;
 }
 
-void gotoxy(int x, int y){
-    COORD c;
-    c.X = x;
-    c.Y = y;
-  
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
-    }
+

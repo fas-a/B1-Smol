@@ -10,12 +10,10 @@
 #include <conio.h>
 #include <stdbool.h>
 
-//HANDLE hConsole;
-
-
-void renderLogoHighscore();
 
 void TampilHighscore();
+
+void renderLogoHighscore();
 
 void displayhighscore(Player a);
 
@@ -35,6 +33,6 @@ void renderLogo();
 
 void gotoxyfaris(int x, int y);
 
-// void hideCursor();
+void hideCursor();
 
 #endif

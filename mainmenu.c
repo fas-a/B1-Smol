@@ -5,10 +5,10 @@ int PilihMenu(){
     int keypress = 0;
     
     while(keypress != 13){
-        gotoxyfaris(30,10); arrowhere(1, position); printf(" Play \n");
-        gotoxyfaris(30,11); arrowhere(2, position); printf(" How To Play \n");
-        gotoxyfaris(30,12); arrowhere(3, position); printf(" Highscore \n");
-        gotoxyfaris(30,13); arrowhere(4, position); printf(" Exit \n");
+        gotoxy(30,10); arrowhere(1, position); printf(" Play \n");
+        gotoxy(30,11); arrowhere(2, position); printf(" How To Play \n");
+        gotoxy(30,12); arrowhere(3, position); printf(" Highscore \n");
+        gotoxy(30,13); arrowhere(4, position); printf(" Exit \n");
         keypress = getch();
         fflush(stdin);
         if(keypress == 80){
@@ -53,7 +53,7 @@ void renderLogo()
                          "                           |___/                                            "};
  for (int i = 0; i <= 76; i++)
  {
-   gotoxyfaris(0, 0);
+   gotoxy(0, 0);
    for (int j = 0; j < 8; j++)
    {
     for(int k = 0; k <= i; k++){
@@ -75,7 +75,7 @@ void TampilLogo(){
                          "                            __/ |                                           ",
                          "                           |___/                                            "};
 
-   gotoxyfaris(0, 0);
+   gotoxy(0, 0);
    for (int j = 0; j < 8; j++)
    {
     for(int k = 0; k <= 76; k++){
@@ -86,18 +86,11 @@ void TampilLogo(){
  }
 }
 
-void gotoxyfaris(int x, int y)
+void hideCursor()
 {
-  COORD coord;
-  coord.X = x;
-  coord.Y = y;
-  SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+  HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+  CONSOLE_CURSOR_INFO info;
+  info.dwSize = 100;
+  info.bVisible = FALSE;
+  SetConsoleCursorInfo(consoleHandle, &info);
 }
-
-// void hideCursor()
-// {
-//   CONSOLE_CURSOR_INFO info;
-//   info.dwSize = 100;
-//   info.bVisible = FALSE;
-//   SetConsoleCursorInfo(hConsole, &info);
-// }

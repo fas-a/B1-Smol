@@ -1,9 +1,12 @@
 #ifndef HOWTOPLAY_H_
 #define HOWTOPLAY_H_
+
+#include "gameplay.h"
 #include <stdio.h>
 #include <windows.h>
 
-void gotoxy(int x, int y);
+#define N 8
+
 
 void howtoplay();
 
@@ -15,7 +18,6 @@ int isSafe(int x, int y, int sol[N][N]);
 
 void TampilSol(int sol[N][N]);
 
-void gotoxy(int x, int y);
 
 #endif // HOWTOPLAY_H_
 

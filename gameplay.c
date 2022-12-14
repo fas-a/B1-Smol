@@ -64,11 +64,11 @@ void PlayGame(Player pl) {
     // Hitung mundur
     int x;
     for (x=5;x>=1;--x) {
-        gotoxy(15,2);
+        invgotoxy(15,2);
         printf("Permainan di mulai dalam : %d", x);
         Sleep(1000);
     }
-    gotoxy(15,2);
+    invgotoxy(15,2);
     printf("                                              ");
 
     tampilMisc(pl);
@@ -82,7 +82,7 @@ void PlayGame(Player pl) {
     }
 }
 
-void gotoxy(int x, int y) {
+void invgotoxy(int x, int y) {
     printf("\033[%d;%dH", y, x);
     // Inverted because I like the x to be vertically and y to be horizontally
     // Also use 2:1 ratio pls idk why but yeah lmao google it
@@ -97,20 +97,20 @@ void tampilPapan(Player pl) {
     papan[Px][Py].status = 'P';
 
     // Tampilan papan
-    gotoxy(15,5);
+    invgotoxy(15,5);
     printf(" _______________________________________________");
     for (i=7;i<=21;i+=2) {
-        gotoxy(15,i);
+        invgotoxy(15,i);
         printf("|-----|-----|-----|-----|-----|-----|-----|-----|");
     }
     int x=0;
     int y;
     for (i=6;i<6+(N*2-1);i+=2){
         y = 0;
-        gotoxy(15,i);
+        invgotoxy(15,i);
         printf("|     |     |     |     |     |     |     |     |");
         for (j=3;j<3+(N*6-1);j+=6) {
-            gotoxy(15+j,i);
+            invgotoxy(15+j,i);
             if (papan[x][y].status=='O') printf("");
             else if (papan[x][y].status=='X') printf("X");
             else if (papan[x][y].status=='H') printf("H");
@@ -126,19 +126,19 @@ void tampilPapan(Player pl) {
 void initializePlayer(Player *pl) {
     int x,y;
     do {
-        gotoxy(15,2);
+        invgotoxy(15,2);
         printf("                                                   ");
-        gotoxy(15,2);
+        invgotoxy(15,2);
         printf("Masukkan koordinat petak pertama (x,y) = ");
         scanf("%d %d", &x, &y);
         fflush(stdin);
         if (x<1 || x>8 || y<1 || y>8) {
-            gotoxy(15,3);
+            invgotoxy(15,3);
             printf("Masukkan koordinat yang tepat");
         }
     } while (x<1 || x>8 || y<1 || y>8);
     
-    gotoxy(15,3);
+    invgotoxy(15,3);
     printf("Masukkan waktu batas tiap gerakan (dalam detik) = ");
     scanf("%d", &wkt);
     fflush(stdin);
@@ -152,7 +152,7 @@ void initializePlayer(Player *pl) {
 }
 
 void tampilMisc(Player pl) {
-    gotoxy(15,23);
+    invgotoxy(15,23);
     printf("Skor = %d", pl.skor);
 }
 
@@ -206,7 +206,7 @@ void History() {
         hY=5;
         hX+=11;
     }
-    gotoxy(hX, hY);
+    invgotoxy(hX, hY);
     printf("X: %d Y: %d",iY+1, iX+1);
     hY++;
 }
@@ -219,7 +219,7 @@ void Move(Player *pl){
         time_t start_time = clock();
         for( ;clock() - start_time <= wkt*CLOCKS_PER_SEC; )
         {   
-            gotoxy(15,3);
+            invgotoxy(15,3);
             printf("Timer : %d", (clock()-start_time)/1000);
             if(kbhit() > 0)  // some key is pressed
             {
@@ -229,7 +229,7 @@ void Move(Player *pl){
                 switch(c) { // the real value
                     case '\r':
                         if (!validate(iX,iY,x,y) || eks[x][y].status=='X') {
-                            gotoxy(15, 4);
+                            invgotoxy(15, 4);
                             printf("Ini bukan langkah kuda yang valid!");
                         } else {
                             papan[iX][iY].status = 'X';
@@ -237,9 +237,9 @@ void Move(Player *pl){
 
                             History();
 
-                            gotoxy(15, 3);
+                            invgotoxy(15, 3);
                             printf("                                     ");
-                            gotoxy(15, 4);
+                            invgotoxy(15, 4);
                             printf("                                     ");
 
                             iX = x;
@@ -304,21 +304,21 @@ void Move(Player *pl){
         next_loop: ;
     } while(!beres);
     if (!menang) {
-        gotoxy(15,2);
+        invgotoxy(15,2);
         printf("                                              ");
-        gotoxy(15,3);
+        invgotoxy(15,3);
         printf("                                              ");
-        gotoxy(15,2);
+        invgotoxy(15,2);
         printf("Anda kalah, wek");
     } else {
-        gotoxy(15,2);
+        invgotoxy(15,2);
         printf("                                              ");
-        gotoxy(15,3);
+        invgotoxy(15,3);
         printf("                                              ");
-        gotoxy(15,2);
+        invgotoxy(15,2);
         printf("Anda menang, yey");
     }
-    gotoxy(15,3);
+    invgotoxy(15,3);
         printf("Masukkan nama : ");
         int i;
         for (i=0;i<3;i++) {
@@ -340,4 +340,12 @@ void saveToLB(Player pl){
         fwrite(&tPl,sizeof(tPl),1,frec);
     }
     fclose(frec);
+}
+
+void gotoxy(int x, int y)
+{
+  COORD coord;
+  coord.X = x;
+  coord.Y = y;
+  SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
