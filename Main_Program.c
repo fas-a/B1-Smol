@@ -9,8 +9,8 @@
 
 int main(){
 
-    ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
-    hideCursor();
+    ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED); //Mengubah tampilan cmd agar fullscreen
+    hideCursor(); //Menyembunyikan cursor
     renderLogo();
     int opsi;
     opsi = PilihMenu();
