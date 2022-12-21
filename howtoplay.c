@@ -5,22 +5,23 @@
 
 
 void howtoplay(){
-	printf("\t\t _____   _____   _____    _____     _____   _____   _____    __  __   _____   _____   __   _ \n");
-	printf("\t\t|  ___| |  _  | |  _  \\  |  _  |   |  _  \\ |  ___| |  _  \\  |  \\/  | |  _  | |_   _| |  \\ | | \n");
-	printf("\t\t| |     | |_| | | |_| |  | |_| |   | |_| | | |__   | |_| |  |      | | |_| |   | |   |   \\| | \n");
-	printf("\t\t| |     |  _  | |  _  /  |  _  |   |  _ <  |  __|  |  _  /  | |\\/| | |  _  |   | |   | |\\   | \n");
-	printf("\t\t| |___  | | | | | | \\ \\  | | | |   | |_| | | |___  | | \\ \\  | |  | | | | | |  _| |_  | | \\  | \n");
-	printf("\t\t|_____| |_| |_| |_|  \\_\\ |_| |_|   |_____/ |_____| |_|  \\_\\ |_|  |_| |_| |_| |_____| |_|  |_| \n");
-	printf("\t\t=============================================================================================\n\n");
-	printf("1. Permainan dimulai dengan sebuah papan kosong berukuran 8x8.\n");
-	printf("2. Pemain memilih petak pada papan untuk dijadikan petak awal atau home.\n");
-	printf("3. Pemain meletakkan bidak pada petak kosong dengan jalur membentuk huruf L\n");
-	printf("4. Pemain mendapatkan skor ketika meletakkan bidak pada petak kosong.\n");
-	printf("5. Skor maksimal adalah 64 dimana semua petak pada papan harus dilalui.\n");
-	printf("6. Pemain kalah jika sudah tidak terdapat petak yang dapat dilalui sebelum mencapai skor maksimal.\n\n");
+	printf(" _____   _____   _____    _____     _____   _____   _____    __  __   _____   _____   __   _ \n");
+	printf("|  ___| |  _  | |  _  \\  |  _  |   |  _  \\ |  ___| |  _  \\  |  \\/  | |  _  | |_   _| |  \\ | | \n");
+	printf("| |     | |_| | | |_| |  | |_| |   | |_| | | |__   | |_| |  |      | | |_| |   | |   |   \\| | \n");
+	printf("| |     |  _  | |  _  /  |  _  |   |  _ <  |  __|  |  _  /  | |\\/| | |  _  |   | |   | |\\   | \n");
+	printf("| |___  | | | | | | \\ \\  | | | |   | |_| | | |___  | | \\ \\  | |  | | | | | |  _| |_  | | \\  | \n");
+	printf("|_____| |_| |_| |_|  \\_\\ |_| |_|   |_____/ |_____| |_|  \\_\\ |_|  |_| |_| |_| |_____| |_|  |_| \n");
+	printf("=============================================================================================\n\n");
+	printf("1. Pemain memasukkan nilai x dan y dari 1 sampai 8 sebagai koordinat petak awal.\n");
+	printf("2. Pemain memasukkan nilai maksimal 30 sebagai batas waktu giliran.\n");
+	printf("3. Permainan dimulai dengan sebuah papan kosong berukuran 8x8.\n");
+	printf("4. Pemain meletakkan bidak pada petak kosong dengan jalur membentuk huruf L menggunakan tombol panah pada keyboard.\n");
+	printf("5. Pemain mendapatkan skor ketika meletakkan bidak pada petak kosong.\n");
+	printf("6. Skor maksimal adalah 64 dimana semua petak pada papan harus dilalui.\n");
+	printf("7. Pemain kalah jika sudah tidak terdapat petak yang dapat dilalui sebelum mencapai skor maksimal atau waktu habis.\n\n");
 	
 	gotoxy(35,16);
-	printf("Contoh :\n");
+	printf("Contoh langkah tepat:\n");
 	Demo();
 }
 
@@ -97,5 +98,3 @@ int solveKTUtil(int x, int y, int movei, int sol[N][N], int xMove[N], int yMove[
 
 	return 0;
 }
-
-
