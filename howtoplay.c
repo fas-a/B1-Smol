@@ -1,17 +1,28 @@
+/*
+	Author	: Najib Alimudin Fajri
+	Tanggal	: 21/12/2022
+	Versi	: 2.0
+*/
+
+
 #include <stdio.h>
 #include <windows.h>
 #include "howtoplay.h"
 
-
-
+/*
+	Deskripsi Modul	: Modul untuk menampilkan aturan dan cara bermain kepada player dengan menampilkan deskripsi permainan dan juga visualisasi 
+			  permainan dengan menggunakan algoritma Backtracking untuk gambaran permainan yang mendapatkan kondisi menang.
+	I.S		: Aturan dan visualisasi permaianan belum ditampilkan
+	F.S 		: Aturan dan visualisasi permainan ditampilkan
+*/
 void howtoplay(){
-	printf(" _____   _____   _____    _____     _____   _____   _____    __  __   _____   _____   __   _ \n");
-	printf("|  ___| |  _  | |  _  \\  |  _  |   |  _  \\ |  ___| |  _  \\  |  \\/  | |  _  | |_   _| |  \\ | | \n");
-	printf("| |     | |_| | | |_| |  | |_| |   | |_| | | |__   | |_| |  |      | | |_| |   | |   |   \\| | \n");
-	printf("| |     |  _  | |  _  /  |  _  |   |  _ <  |  __|  |  _  /  | |\\/| | |  _  |   | |   | |\\   | \n");
-	printf("| |___  | | | | | | \\ \\  | | | |   | |_| | | |___  | | \\ \\  | |  | | | | | |  _| |_  | | \\  | \n");
-	printf("|_____| |_| |_| |_|  \\_\\ |_| |_|   |_____/ |_____| |_|  \\_\\ |_|  |_| |_| |_| |_____| |_|  |_| \n");
-	printf("=============================================================================================\n\n");
+	printf("\t _____   _____   _____    _____     _____   _____   _____    __  __   _____   _____   __   _ \n");
+	printf("\t|  ___| |  _  | |  _  \\  |  _  |   |  _  \\ |  ___| |  _  \\  |  \\/  | |  _  | |_   _| |  \\ | | \n");
+	printf("\t| |     | |_| | | |_| |  | |_| |   | |_| | | |__   | |_| |  |      | | |_| |   | |   |   \\| | \n");
+	printf("\t| |     |  _  | |  _  /  |  _  |   |  _ <  |  __|  |  _  /  | |\\/| | |  _  |   | |   | |\\   | \n");
+	printf("\t| |___  | | | | | | \\ \\  | | | |   | |_| | | |___  | | \\ \\  | |  | | | | | |  _| |_  | | \\  | \n");
+	printf("\t|_____| |_| |_| |_|  \\_\\ |_| |_|   |_____/ |_____| |_|  \\_\\ |_|  |_| |_| |_| |_____| |_|  |_| \n");
+	printf("\t=============================================================================================\n\n");
 	printf("1. Pemain memasukkan nilai x dan y dari 1 sampai 8 sebagai koordinat petak awal.\n");
 	printf("2. Pemain memasukkan nilai maksimal 30 sebagai batas waktu giliran.\n");
 	printf("3. Permainan dimulai dengan sebuah papan kosong berukuran 8x8.\n");
@@ -27,11 +38,19 @@ void howtoplay(){
 
 #define N 8
 
-//Cek valid atau tidak
+/*
+	Deskripsi Modul	: Modul untuk memeriksa apakah langkah kuda itu valid atau tidak. Jika valid mengembalikan nilai 1 dan tidak valid mengembalikkan nilai 0.
+*/
 int isSafe(int x, int y, int sol[N][N]){
 	return (x >= 0 && x < N && y >= 0 && y < N && sol[x][y] == -1);
 }
 
+
+/*
+	Deskripsi Modul	: Modul untuk menampilkan jalur langkah kuda yang tepat dari didapat dari modul solveKTUtil
+	I.S 		: Jalur langkah kuda yang tepat belum ditampilkan.
+	F.S		: Jalur langkah kuda yang tepat ditampilkan.
+*/
 #define H "\033[0;32m"
 #define P "\033[0;37m"
 #define R "\033[0;31m"
@@ -55,6 +74,10 @@ void TampilSol(int sol[N][N]){
 	}
 }
 
+
+/*
+	Deskripsi Modul	: Modul untuk menginisialisasi demo atau visualisasi pemilihan jalur yang tepat.
+*/
 int Demo(){
 	int sol[N][N];
 
@@ -79,6 +102,11 @@ int Demo(){
 	return 1;
 }
 
+
+/*
+	Deskripsi Modul	: Modul untuk menemukan langkah kuda catur yang tepat dengan menggunakan backtrack. 
+			  Jika bernilai satu, maka langkah ditemukan, jika bernilai 0 maka langkah tidak ditemukan.
+*/
 int solveKTUtil(int x, int y, int movei, int sol[N][N], int xMove[N], int yMove[N]){
 	int k, next_x, next_y;
 	if (movei == N * N)
